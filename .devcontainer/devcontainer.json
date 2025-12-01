@@ -6,7 +6,8 @@
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/jajera/features/gcloud-cli:1": {}
+		"ghcr.io/jajera/features/gcloud-cli:1": {},
+		"ghcr.io/devcontainers/features/node": { "version": 20 }
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -27,8 +28,17 @@
 	// Mount authentication credentials to persist across container rebuilds
 	"mounts": [
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gh,target=/home/vscode/.config/gh,type=bind,consistency=cached",
-		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gcloud,target=/home/vscode/.config/gcloud,type=bind,consistency=cached"
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gcloud,target=/home/vscode/.config/gcloud,type=bind,consistency=cached",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.gemini,target=/home/vscode/.gemini,type=bind,consistency=cached"
+
 	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"google.gemini-cli-vscode-ide-companion"
+			]
+		}
+	},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
